@@ -38,6 +38,8 @@ const calculateCoordinates = (initialCoords, commands) => {
       }
     } else if (nextStep === "r" || nextStep === "l") {
       direction = directionMap[nextStep][direction];
+    } else {
+      direction = nextStep;
     }
   }
 
