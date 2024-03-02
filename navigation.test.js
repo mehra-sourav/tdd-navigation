@@ -59,7 +59,7 @@ describe("Testing movement functionality", () => {
   });
 });
 
-describe("Testing turning functionality", () => {
+describe("Testing turning functionality along XY plane", () => {
   test("Spacecraft turns left", () => {
     let commands = ["l"];
     initialCoords.direction = "N";
@@ -134,5 +134,18 @@ describe("Testing turning functionality", () => {
     expect(result4.y).toBe(0);
     expect(result4.z).toBe(0);
     expect(result4.direction).toBe("N");
+  });
+});
+
+describe("Testing turning functionality along Z axis", () => {
+  test("Spacecraft turns up", () => {
+    let commands = ["Up"];
+    initialCoords.direction = "N";
+    let result1 = calculateCoordinates(initialCoords, commands);
+
+    expect(result1.x).toBe(0);
+    expect(result1.y).toBe(0);
+    expect(result1.z).toBe(0);
+    expect(result1.direction).toBe("Up");
   });
 });
