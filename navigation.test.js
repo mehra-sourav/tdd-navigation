@@ -139,13 +139,30 @@ describe("Testing turning functionality along XY plane", () => {
 
 describe("Testing turning functionality along Z axis", () => {
   test("Spacecraft turns up", () => {
-    let commands = ["Up"];
+    const commands = ["u"];
     initialCoords.direction = "N";
-    let result1 = calculateCoordinates(initialCoords, commands);
+    const { x, y, z, direction } = calculateCoordinates(
+      initialCoords,
+      commands
+    );
 
-    expect(result1.x).toBe(0);
-    expect(result1.y).toBe(0);
-    expect(result1.z).toBe(0);
-    expect(result1.direction).toBe("Up");
+    expect(x).toBe(0);
+    expect(y).toBe(0);
+    expect(z).toBe(0);
+    expect(direction).toBe("Up");
+  });
+
+  test("Spacecraft turns down", () => {
+    const commands = ["d"];
+    initialCoords.direction = "N";
+    const { x, y, z, direction } = calculateCoordinates(
+      initialCoords,
+      commands
+    );
+
+    expect(x).toBe(0);
+    expect(y).toBe(0);
+    expect(z).toBe(0);
+    expect(direction).toBe("Down");
   });
 });
