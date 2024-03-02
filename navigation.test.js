@@ -166,3 +166,19 @@ describe("Testing turning functionality along Z axis", () => {
     expect(direction).toBe("Down");
   });
 });
+
+describe("Testing Sample Inputs", () => {
+  test("(0,0,0); [f, r, u, b, l]; N", () => {
+    const commands = ["f", "r", "u", "b", "l"];
+    initialCoords.direction = "N";
+    const { x, y, z, direction } = calculateCoordinates(
+      initialCoords,
+      commands
+    );
+
+    expect(x).toBe(0);
+    expect(y).toBe(1);
+    expect(z).toBe(-1);
+    expect(direction).toBe("N");
+  });
+});
