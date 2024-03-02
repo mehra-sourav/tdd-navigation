@@ -58,3 +58,16 @@ describe("Testing movement functionality", () => {
     expect(direction).toBe("Up");
   });
 });
+
+describe("Testing turning functionality", () => {
+  test("Spacecraft turns left from North ", () => {
+    let commands = ["l"];
+    initialCoords.direction = "N";
+    let result1 = calculateCoordinates(initialCoords, commands);
+
+    expect(result1.x).toBe(0);
+    expect(result1.y).toBe(0);
+    expect(result1.z).toBe(0);
+    expect(result1.direction).toBe("W");
+  });
+});

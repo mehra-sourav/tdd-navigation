@@ -3,6 +3,21 @@ const movementMap = {
   b: -1,
 };
 
+const directionMap = {
+  l: {
+    N: "W",
+    W: "S",
+    S: "E",
+    E: "N",
+  },
+  r: {
+    N: "E",
+    E: "S",
+    S: "W",
+    W: "N",
+  },
+};
+
 const calculateCoordinates = (initialCoords, commands) => {
   let { x, y, z, direction } = initialCoords;
 
@@ -21,6 +36,8 @@ const calculateCoordinates = (initialCoords, commands) => {
       } else {
         z -= movementMap[nextStep];
       }
+    } else if (nextStep === "r" || nextStep === "l") {
+      direction = directionMap[nextStep][direction];
     }
   }
 
