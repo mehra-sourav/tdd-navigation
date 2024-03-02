@@ -60,7 +60,7 @@ describe("Testing movement functionality", () => {
 });
 
 describe("Testing turning functionality", () => {
-  test("Spacecraft turns left from North ", () => {
+  test("Spacecraft turns left", () => {
     let commands = ["l"];
     initialCoords.direction = "N";
     let result1 = calculateCoordinates(initialCoords, commands);
@@ -69,5 +69,70 @@ describe("Testing turning functionality", () => {
     expect(result1.y).toBe(0);
     expect(result1.z).toBe(0);
     expect(result1.direction).toBe("W");
+
+    commands = ["l", "l"];
+    initialCoords.direction = "N";
+    let result2 = calculateCoordinates(initialCoords, commands);
+
+    expect(result2.x).toBe(0);
+    expect(result2.y).toBe(0);
+    expect(result2.z).toBe(0);
+    expect(result2.direction).toBe("S");
+
+    commands = ["l", "l", "l"];
+    initialCoords.direction = "N";
+    let result3 = calculateCoordinates(initialCoords, commands);
+
+    expect(result3.x).toBe(0);
+    expect(result3.y).toBe(0);
+    expect(result3.z).toBe(0);
+    expect(result3.direction).toBe("E");
+
+    commands = ["l", "l", "l", "l"];
+    initialCoords.direction = "N";
+    let result4 = calculateCoordinates(initialCoords, commands);
+
+    expect(result4.x).toBe(0);
+    expect(result4.y).toBe(0);
+    expect(result4.z).toBe(0);
+    expect(result4.direction).toBe("N");
+  });
+
+  test("Spacecraft turns right", () => {
+    let commands = ["r"];
+    initialCoords.direction = "N";
+    let result1 = calculateCoordinates(initialCoords, commands);
+
+    expect(result1.x).toBe(0);
+    expect(result1.y).toBe(0);
+    expect(result1.z).toBe(0);
+    expect(result1.direction).toBe("E");
+
+    commands = ["r", "r"];
+    initialCoords.direction = "N";
+    let result2 = calculateCoordinates(initialCoords, commands);
+
+    expect(result2.x).toBe(0);
+    expect(result2.y).toBe(0);
+    expect(result2.z).toBe(0);
+    expect(result2.direction).toBe("S");
+
+    commands = ["r", "r", "r"];
+    initialCoords.direction = "N";
+    let result3 = calculateCoordinates(initialCoords, commands);
+
+    expect(result3.x).toBe(0);
+    expect(result3.y).toBe(0);
+    expect(result3.z).toBe(0);
+    expect(result3.direction).toBe("W");
+
+    commands = ["r", "r", "r", "r"];
+    initialCoords.direction = "N";
+    let result4 = calculateCoordinates(initialCoords, commands);
+
+    expect(result4.x).toBe(0);
+    expect(result4.y).toBe(0);
+    expect(result4.z).toBe(0);
+    expect(result4.direction).toBe("N");
   });
 });
