@@ -12,6 +12,10 @@ const calculateCoordinates = (initialCoords, commands) => {
         x += directionMap[nextStep];
       } else if (direction === "W") {
         x -= directionMap[nextStep];
+      } else if (direction === "N") {
+        y += directionMap[nextStep];
+      } else if (direction === "S") {
+        y -= directionMap[nextStep];
       }
     }
   }
