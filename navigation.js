@@ -1,4 +1,4 @@
-const directionMap = {
+const movementMap = {
   f: 1,
   b: -1,
 };
@@ -9,17 +9,17 @@ const calculateCoordinates = (initialCoords, commands) => {
   for (let nextStep of commands) {
     if (nextStep === "f" || nextStep === "b") {
       if (direction === "E") {
-        x += directionMap[nextStep];
+        x += movementMap[nextStep];
       } else if (direction === "W") {
-        x -= directionMap[nextStep];
+        x -= movementMap[nextStep];
       } else if (direction === "N") {
-        y += directionMap[nextStep];
+        y += movementMap[nextStep];
       } else if (direction === "S") {
-        y -= directionMap[nextStep];
+        y -= movementMap[nextStep];
       } else if (direction === "Up") {
-        z += directionMap[nextStep];
+        z += movementMap[nextStep];
       } else {
-        z -= directionMap[nextStep];
+        z -= movementMap[nextStep];
       }
     }
   }
