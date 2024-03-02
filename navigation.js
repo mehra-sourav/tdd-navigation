@@ -1,6 +1,20 @@
 const movementMap = {
-  f: 1,
-  b: -1,
+  f: {
+    N: [0, 1, 0],
+    E: [1, 0, 0],
+    S: [0, -1, 0],
+    W: [-1, 0, 0],
+    Up: [0, 0, 1],
+    Down: [0, 0, -1],
+  },
+  b: {
+    N: [0, -1, 0],
+    E: [-1, 0, 0],
+    S: [0, 1, 0],
+    W: [1, 0, 0],
+    Up: [0, 0, -1],
+    Down: [0, 0, 1],
+  },
 };
 
 const directionMap = {
@@ -25,22 +39,13 @@ const calculateCoordinates = (initialCoords, commands) => {
   for (let nextStep of commands) {
     // Block for handling forward and backward movements
     if (nextStep === "f" || nextStep === "b") {
-      if (direction === "E") {
-        x += movementMap[nextStep];
-      } else if (direction === "W") {
-        x -= movementMap[nextStep];
-      } else if (direction === "N") {
-        y += movementMap[nextStep];
-      } else if (direction === "S") {
-        y -= movementMap[nextStep];
-      } else if (direction === "Up") {
-        z += movementMap[nextStep];
-      } else {
-        z -= movementMap[nextStep];
-      }
+      let [xMov, yMov, zMov] = movementMap[nextStep][direction];
+      x += xMov;
+      y += yMov;
+      z += zMov;
     }
     // Block for handling left and right turning
-    else if (nextStep === "r" || nextStep === "l") {
+    else if (nextStep === "l" || nextStep === "r") {
       let temp = direction;
 
       if (["Up", "Down"].includes(direction)) {
@@ -50,13 +55,10 @@ const calculateCoordinates = (initialCoords, commands) => {
       prevDirection = direction;
       direction = directionMap[nextStep][temp];
     }
-    // Blocks for handling up and down turning
-    else if (nextStep === "u") {
+    // Block for handling up and down turning
+    else {
       prevDirection = direction;
-      direction = "Up";
-    } else {
-      prevDirection = direction;
-      direction = "Down";
+      direction = nextStep === "u" ? "Up" : "Down";
     }
   }
 
