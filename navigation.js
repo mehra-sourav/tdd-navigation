@@ -23,6 +23,7 @@ const calculateCoordinates = (initialCoords, commands) => {
   let prevDirection = null;
 
   for (let nextStep of commands) {
+    // Block for handling forward and backward movements
     if (nextStep === "f" || nextStep === "b") {
       if (direction === "E") {
         x += movementMap[nextStep];
@@ -37,7 +38,9 @@ const calculateCoordinates = (initialCoords, commands) => {
       } else {
         z -= movementMap[nextStep];
       }
-    } else if (nextStep === "r" || nextStep === "l") {
+    }
+    // Block for handling left and right turning
+    else if (nextStep === "r" || nextStep === "l") {
       let temp = direction;
 
       if (["Up", "Down"].includes(direction)) {
@@ -46,7 +49,9 @@ const calculateCoordinates = (initialCoords, commands) => {
 
       prevDirection = direction;
       direction = directionMap[nextStep][temp];
-    } else if (nextStep === "u") {
+    }
+    // Blocks for handling up and down turning
+    else if (nextStep === "u") {
       prevDirection = direction;
       direction = "Up";
     } else {
