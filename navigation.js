@@ -20,6 +20,7 @@ const directionMap = {
 
 const calculateCoordinates = (initialCoords, commands) => {
   let { x, y, z, direction } = initialCoords;
+  let prevDirection = null;
 
   for (let nextStep of commands) {
     if (nextStep === "f" || nextStep === "b") {
@@ -37,10 +38,19 @@ const calculateCoordinates = (initialCoords, commands) => {
         z -= movementMap[nextStep];
       }
     } else if (nextStep === "r" || nextStep === "l") {
-      direction = directionMap[nextStep][direction];
+      let temp = direction;
+
+      if (["Up", "Down"].includes(direction)) {
+        temp = prevDirection;
+      }
+
+      prevDirection = direction;
+      direction = directionMap[nextStep][temp];
     } else if (nextStep === "u") {
+      prevDirection = direction;
       direction = "Up";
     } else {
+      prevDirection = direction;
       direction = "Down";
     }
   }
