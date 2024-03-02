@@ -16,6 +16,10 @@ const calculateCoordinates = (initialCoords, commands) => {
         y += directionMap[nextStep];
       } else if (direction === "S") {
         y -= directionMap[nextStep];
+      } else if (direction === "Up") {
+        z += directionMap[nextStep];
+      } else {
+        z -= directionMap[nextStep];
       }
     }
   }

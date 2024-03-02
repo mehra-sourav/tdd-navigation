@@ -36,3 +36,14 @@ test("Spacecraft moves along Y axis", () => {
   expect(z).toBe(0);
   expect(direction).toBe("N");
 });
+
+test("Spacecraft moves along Z axis", () => {
+  const commands = ["f", "f", "b", "b", "b"];
+  initialCoords.direction = "Up";
+  const { x, y, z, direction } = calculateCoordinates(initialCoords, commands);
+
+  expect(x).toBe(0);
+  expect(y).toBe(0);
+  expect(z).toBe(-1);
+  expect(direction).toBe("Up");
+});
