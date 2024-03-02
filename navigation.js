@@ -38,8 +38,10 @@ const calculateCoordinates = (initialCoords, commands) => {
       }
     } else if (nextStep === "r" || nextStep === "l") {
       direction = directionMap[nextStep][direction];
+    } else if (nextStep === "u") {
+      direction = "Up";
     } else {
-      direction = nextStep;
+      direction = "Down";
     }
   }
 
