@@ -16,34 +16,45 @@ beforeEach(() => {
   };
 });
 
-test("Spacecraft moves along X axis", () => {
-  const commands = ["f", "f", "b", "b", "b"];
-  const { x, y, z, direction } = calculateCoordinates(initialCoords, commands);
+describe("Testing movement functionality", () => {
+  test("Spacecraft moves along X axis", () => {
+    const commands = ["f", "f", "b", "b", "b"];
+    const { x, y, z, direction } = calculateCoordinates(
+      initialCoords,
+      commands
+    );
 
-  expect(x).toBe(-1);
-  expect(y).toBe(0);
-  expect(z).toBe(0);
-  expect(direction).toBe("E");
-});
+    expect(x).toBe(-1);
+    expect(y).toBe(0);
+    expect(z).toBe(0);
+    expect(direction).toBe("E");
+  });
 
-test("Spacecraft moves along Y axis", () => {
-  const commands = ["f", "f", "b", "b", "b"];
-  initialCoords.direction = "N";
-  const { x, y, z, direction } = calculateCoordinates(initialCoords, commands);
+  test("Spacecraft moves along Y axis", () => {
+    const commands = ["f", "f", "b", "b", "b"];
+    initialCoords.direction = "N";
+    const { x, y, z, direction } = calculateCoordinates(
+      initialCoords,
+      commands
+    );
 
-  expect(x).toBe(0);
-  expect(y).toBe(-1);
-  expect(z).toBe(0);
-  expect(direction).toBe("N");
-});
+    expect(x).toBe(0);
+    expect(y).toBe(-1);
+    expect(z).toBe(0);
+    expect(direction).toBe("N");
+  });
 
-test("Spacecraft moves along Z axis", () => {
-  const commands = ["f", "f", "b", "b", "b"];
-  initialCoords.direction = "Up";
-  const { x, y, z, direction } = calculateCoordinates(initialCoords, commands);
+  test("Spacecraft moves along Z axis", () => {
+    const commands = ["f", "f", "b", "b", "b"];
+    initialCoords.direction = "Up";
+    const { x, y, z, direction } = calculateCoordinates(
+      initialCoords,
+      commands
+    );
 
-  expect(x).toBe(0);
-  expect(y).toBe(0);
-  expect(z).toBe(-1);
-  expect(direction).toBe("Up");
+    expect(x).toBe(0);
+    expect(y).toBe(0);
+    expect(z).toBe(-1);
+    expect(direction).toBe("Up");
+  });
 });
