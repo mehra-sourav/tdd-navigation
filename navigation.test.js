@@ -1,6 +1,6 @@
 const calculateCoordinates = require("./navigation");
 
-const initialCoords = {
+let initialCoords = {
   x: 0,
   y: 0,
   z: 0,
@@ -8,7 +8,7 @@ const initialCoords = {
 };
 
 beforeEach(() => {
-  initialCoords.x = {
+  initialCoords = {
     x: 0,
     y: 0,
     z: 0,
